@@ -1,0 +1,38 @@
+name: test-library-chart-releaser
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  test_library_chart_releaser_install_action:
+    runs-on: ubuntu-22.04
+    permissions:
+      actions: none
+      checks: none
+      contents: none
+      deployments: none
+      issues: none
+      packages: none
+      pull-requests: none
+      repository-projects: none
+      security-events: none
+      statuses: none
+    name: Install chart-releaser and test presence in path
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install chart-releaser
+      uses: ./
+      with:
+        install_only: true
+      env:
+        CR_TOKEN: "FAKE_SECRETS"
+    - name: Check that chart-releaser is installed
+      run: cr version
+    - name: Check root directory
+      run: |
+        if ! git diff --stat --exit-code; then
+          echo 'should be clean'
+          exit 1
+        fi
