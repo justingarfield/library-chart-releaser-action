@@ -2,6 +2,8 @@
 
 A GitHub Action that turns a Helm Library Chart repository into a self-hosted Helm Chart Repository using GitHub Pages.
 
+[![ShellCheck](https://github.com/justingarfield/library-chart-releaser-action/actions/workflows/shellcheck.yaml/badge.svg)](https://github.com/justingarfield/library-chart-releaser-action/actions/workflows/shellcheck.yaml) [![test-library-chart-releaser](https://github.com/justingarfield/library-chart-releaser-action/actions/workflows/test-action.yml/badge.svg)](https://github.com/justingarfield/library-chart-releaser-action/actions/workflows/test-action.yml)
+
 ## Differences from official chart-releaser-action
 
 [chart-releaser-action](https://github.com/helm/chart-releaser) expects multiple charts, under a `charts/` directory in-order to function properly out-of-the-box. In the case of my library chart, and for singular charts, it just doesn't quite fit-the-bill. To get around this issue, I simply took the [chart-releaser-action](https://github.com/helm/chart-releaser) and modified it a bit to support a single, stand-alone, chart library / chart.
